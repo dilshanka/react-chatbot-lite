@@ -1,16 +1,17 @@
-# React Chatbot Lite 🤖  
+# React Chatbot Lite 🤖
+
 A lightweight, high-performance **RAG chatbot widget** for React applications. Designed to be **headless-capable** but ships with a **beautiful modern UI** out of the box. Connects easily to **Gemini**, **OpenAI**, or **any custom backend** via a simple, standardized API contract.
 
 ---
 
 ## ✨ Features
 
-- 🚀 **Modern UI** — Gradients, glassmorphism, smooth animations  
-- 🎨 **Fully Themeable** — Customize every color, size, and text without CSS  
-- 🧠 **RAG Ready** — Citations, sources, markdown rendering  
-- 🔌 **Backend Agnostic** — Works with Node, Python (FastAPI), or any HTTP API  
-- 📱 **Responsive** — Mobile and desktop optimized  
-- 💨 **Fast** — Built with Vite + Rollup, zero runtime overhead  
+- 🚀 **Modern UI** — Gradients, glassmorphism, smooth animations
+- 🎨 **Fully Themeable** — Customize every color, size, and text without CSS
+- 🧠 **RAG Ready** — Citations, sources, markdown rendering
+- 🔌 **Backend Agnostic** — Works with Node, Python (FastAPI), or any HTTP API
+- 📱 **Responsive** — Mobile and desktop optimized
+- 💨 **Fast** — Built with Vite + Rollup, zero runtime overhead
 
 ---
 
@@ -30,23 +31,23 @@ pnpm add react-chatbot-lite
 
 ### **1. Import Styles**
 
-Add this to your root file (`main.tsx`, `App.tsx`, or `_app.tsx`):
+Add this to your project file 
 
 ```ts
-import 'react-chatbot-lite/dist/style.css';
+import "react-chatbot-lite/style.css";
 ```
 
 ### **2. Wrap Your App**
 
 ```tsx
-import { ChatProvider, ChatWindow } from 'react-chatbot-lite';
+import { ChatProvider, ChatWindow } from "react-chatbot-lite";
 
 function App() {
   return (
-    <ChatProvider 
-      config={{ 
+    <ChatProvider
+      config={{
         baseUrl: "https://your-backend-api.com", // Your RAG server endpoint
-        botId: "user_123_abc" // Optional: For multi-tenant apps
+        botId: "user_123_abc", // Optional: For multi-tenant apps
       }}
     >
       {/* Your App Content */}
@@ -69,32 +70,78 @@ Pass a theme object to override the entire UI—no CSS required.
 <ChatWindow
   title="Support Assistant"
   position="bottom-right"
+  tenantId="optional-tenant-id"
   theme={{
-    // Header
-    headerBgGradient: "linear-gradient(135deg, #FF512F, #DD2476)",
+    /* HEADER */
+    headerBgGradient: "#0d9488",
     headerTextColor: "#ffffff",
+    headerIcon: <Icon size={20} />,
+    headerPadding: "p-4",
+    titleFontSize: "text-base",
+    subtitleFontSize: "text-xs",
+    statusDotColor: "#34d399",
+    alwaysActiveText: "Online now",
 
-    // Launcher Button
-    buttonBgGradient: "linear-gradient(135deg, #FF512F, #DD2476)",
-    buttonSize: "h-16 w-16",
+    /* MESSAGE AREA */
+    messageAreaBgColor: "#ecfdf5",
+    messagePadding: "p-5",
+    messageFontSize: "text-sm",
 
-    // User Message
-    userBubbleBg: "#FFE4E6",
-    userBubbleText: "#9F1239",
+    /* USER MESSAGE */
+    userBubbleBg: "#2dd4bf",
+    userBubbleText: "#ffffff",
 
-    // Bot Message
-    botBubbleBg: "#F3F4F6",
-    botBubbleText: "#1F2937",
+    /* BOT MESSAGE */
+    botBubbleBg: "#ffffff",
+    botBubbleText: "#134e4a",
 
-    // Content
-    thinkingText: "Agent is searching knowledge base...",
-    poweredByText: "Powered by MyCompany AI"
+    /* BODY */
+    bodyBgColor: "#f0fdfa",
+    borderColor: "#99f6e4",
+    borderRadius: "rounded-2xl",
+
+    /* INPUT */
+    inputBgColor: "#ffffff",
+    inputTextColor: "#134e4a",
+    inputFontSize: "text-sm",
+    inputBorderFocus: "focus:ring-2",
+    inputPlaceholderColor: "#9ca3af",
+
+    /* SEND BUTTON */
+    sendButtonBgActive: "#0f766e",
+    sendButtonBgInactive: "#00000000",
+    sendButtonTextActive: "#ffffff",
+    sendButtonTextInactive: "#5eead4",
+    sendIcon: <Send size={20} />,
+
+    /* LAUNCHER BUTTON */
+    buttonBgGradient: "#14b8a6",
+    buttonBgOpen: "#5eead4",
+    buttonTextColor: "#ffffff",
+    buttonOpenTextColor: "#065f46",
+    buttonSize: "h-14 w-14",
+    launcherIcon: <Icon />,
+    launcherBgStyle: undefined,
+    closeIcon: <X size={20} />,
+
+    /* EMPTY STATE & LOADING */
+    emptyStateIcon: <Icon size={40} />,
+    emptyStateMessage: "Start chatting with us!",
+    loadingIcon: undefined,
+    thinkingText: "Assistant is typing...",
+
+    /* FOOTER */
+    poweredByText: "Powered by AI Support",
+    poweredByTextColor: "#0f766e",
+    poweredByFontSize: "text-[10px]",
+    footerPadding: "p-4",
+
+    /* GENERAL ICON COLOR */
+    iconColor: "#ffffff",
   }}
 />
 ```
 
-
 ## 📄 License
 
 MIT © K.D Ranaweera
-

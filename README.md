@@ -96,5 +96,5 @@ Pass a theme object to override the entire UI—no CSS required.
 
 ## 📄 License
 
-MIT © Kavindu Dilshan 
+MIT © K.D Ranaweera
 

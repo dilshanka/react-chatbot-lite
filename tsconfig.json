@@ -13,7 +13,7 @@
     "isolatedModules": true,
     "noEmit": true,
 
-    /* JSX Support - THIS IS THE MISSING PART */
+    
     "jsx": "react-jsx",
 
     /* Linting */

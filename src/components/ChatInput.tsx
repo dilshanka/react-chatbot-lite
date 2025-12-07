@@ -73,7 +73,7 @@ export const ChatInput = ({ onSend, disabled, theme = {} }: ChatInputProps) => {
         className={cn(
           "absolute right-2 p-2 rounded-full transition-all duration-200",
           text.trim() ? `hover:scale-105 shadow-md` : `cursor-not-allowed`,
-          // include tailwind bg/text classes if provided
+
           text.trim() ? (isTailwindClass(sendButtonBgActive) ? sendButtonBgActive : undefined) : (isTailwindClass(sendButtonBgInactive) ? sendButtonBgInactive : undefined),
           text.trim() ? (isTailwindClass(sendButtonTextActive) ? sendButtonTextActive : undefined) : (isTailwindClass(sendButtonTextInactive) ? sendButtonTextInactive : undefined)
         )}

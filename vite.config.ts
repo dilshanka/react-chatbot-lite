@@ -8,14 +8,19 @@ export default defineConfig({
     react(),
     dts({ insertTypesEntry: true }),
   ],
+  resolve: {
+    alias: {
+      'react/jsx-runtime': 'react/jsx-runtime',
+    },
+  },
   build: {
     lib: {
       entry: path.resolve(__dirname, 'src/index.ts'),
-      name: 'NeuroUI',
-      fileName: (format) => `neuro-ui.${format === 'es' ? 'js' : format + '.cjs'}`,
+      name: 'ReactChatbotLite',
+      fileName: (format) => `react-chatbot-lite.${format === 'es' ? 'js' : format + '.cjs'}`,
     },
     rollupOptions: {
-      // Make sure to externalize React so it doesn't get bundled twice
+ 
       external: ['react', 'react-dom', 'react/jsx-runtime'],
       output: {
         globals: {

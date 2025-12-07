@@ -13,20 +13,20 @@ const positionClasses: Record<WidgetPosition, string> = {
 };
 
 export interface ChatTheme {
-  // Colors - Can be Tailwind classes OR CSS colors (hex, rgb, hsl, var())
-  headerBgGradient?: string;  // e.g., 'from-gray-900 to-gray-800' or '#1a1a1a' or 'linear-gradient(...)'
-  headerTextColor?: string;   // e.g., 'text-white' or '#ffffff'
-  bodyBgColor?: string;       // e.g., 'bg-white' or '#ffffff'
-  messageAreaBgColor?: string; // e.g., 'bg-gray-50' or '#f9f9f9'
-  borderColor?: string;       // e.g., 'border-gray-100' or '#e0e0e0'
-  buttonBgGradient?: string;  // e.g., 'from-blue-600 to-indigo-600' or 'linear-gradient(...)' or '#2563eb'
-  buttonBgOpen?: string;      // e.g., 'bg-gray-100' or '#f0f0f0'
-  buttonTextColor?: string;   // e.g., 'text-white' or '#ffffff'
-  buttonOpenTextColor?: string; // e.g., 'text-gray-600' or '#666666'
-  launcherBgStyle?: React.CSSProperties; // Optional: custom style for launcher button background
-  iconColor?: string;         // e.g., 'text-blue-300' or '#93c5fd'
-  statusDotColor?: string;    // e.g., 'bg-green-400' or '#4ade80'
-  poweredByTextColor?: string; // e.g., 'text-gray-400' or '#9ca3af'
+
+  headerBgGradient?: string;  
+  headerTextColor?: string;   
+  bodyBgColor?: string;       
+  messageAreaBgColor?: string; 
+  borderColor?: string;       
+  buttonBgGradient?: string;  
+  buttonBgOpen?: string;      
+  buttonTextColor?: string;   
+  buttonOpenTextColor?: string; 
+  launcherBgStyle?: React.CSSProperties;
+  iconColor?: string;         
+  statusDotColor?: string;    
+  poweredByTextColor?: string; 
 
   // Message Colors
   userBubbleBg?: string;
@@ -152,21 +152,20 @@ export const ChatWindow = ({
         className={cn(
           `pointer-events-auto shadow-2xl ${borderRadius} w-[320px] h-[70.666vh] lg:h-screen/2 sm:mb-4 sm:${borderRadius} flex flex-col overflow-hidden transition-all duration-300 ease-in-out origin-bottom `,
           isOpen ? 'opacity-100 scale-100 translate-y-0 pointer-events-auto' : 'opacity-0 scale-95 translate-y-10 pointer-events-none h-0',
-          // include border class when provided as tailwind
+   
           isTailwindClass(borderColor) ? borderColor : undefined,
-          // include body bg class when provided as tailwind
+      
           isTailwindClass(bodyBgColor) ? bodyBgColor : undefined
         )}
         style={isTailwindClass(bodyBgColor) ? undefined : ({ backgroundColor: bodyBgColor } as CSSProperties)}
       >
         
-        {/* 1. Modern Gradient Header */}
-        {/* header: allow Tailwind classes (gradients) OR inline colors */}
+
         {isTailwindClass(headerBgGradient) ? (
           <div className={cn(`${headerPadding} shadow-md bg-gradient-to-br ${headerBgGradient} ${headerTextColor}`)}>
             <div className="flex justify-between items-center">
               <div className="flex items-center gap-3">
-                {/* Icon Container with Glassmorphism */}
+        
                 <div className="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center backdrop-blur-sm border border-white/20">
                   {headerIcon}
                 </div>
@@ -221,7 +220,7 @@ export const ChatWindow = ({
         )}
 
         {/* 2. Message Area */}
-        {/* message area: support tailwind class or inline color */}
+    
         <div
           className={cn(
             `flex-1 overflow-y-auto ${messagePadding} neuro-scrollbar`,
@@ -266,11 +265,11 @@ export const ChatWindow = ({
                <span>{thinkingText}</span>
              </div>
            )}
-           {/* Invisible div to scroll to */}
+
            <div ref={messagesEndRef} />
         </div>
 
-        {/* 3. Input Area & Footer */}
+
         {/* input/footer: typing area */}
         <div
           className={cn(`${footerPadding} border-t`, isTailwindClass(borderColor) ? borderColor : undefined)}
@@ -313,12 +312,12 @@ export const ChatWindow = ({
           isOpen 
             ? `${buttonOpenTextColor} rotate-90` 
             : `${buttonTextColor}`,
-          // Add Tailwind classes only if they look like Tailwind (e.g., bg-... or from-...)
+
           !isOpen && isTailwindClass(buttonBgGradient) ? `bg-gradient-to-r ${buttonBgGradient}` : undefined,
           isOpen && isTailwindClass(buttonBgOpen) ? buttonBgOpen : undefined
         )}
         style={{
-          // Apply inline styles if not Tailwind classes (for hex colors, gradients, etc.)
+     
           ...(isOpen && !isTailwindClass(buttonBgOpen) ? { backgroundColor: buttonBgOpen } : {}),
           ...(!isOpen && !isTailwindClass(buttonBgGradient) ? { background: buttonBgGradient } : {}),
           // Allow override with explicit launcherBgStyle

@@ -57,12 +57,12 @@ export const ChatBubble = ({ variant, content, theme = {} }: ChatBubbleProps) =>
         {isUser ? userIcon : botIcon}
       </div>
 
-      {/* Text Content */}
+ 
       <div
         className={cn(
           `max-w-[85%] rounded-2xl px-4 py-3 ${messageFontSize} shadow-sm leading-6 transition-all`,
           isUser ? `rounded-tr-sm` : `border border-gray-100 rounded-tl-sm hover:shadow-md`,
-          // attach text color as class if tailwind-like
+      
           (isUser ? (isTailwindClass(userBubbleText) ? userBubbleText : undefined) : (isTailwindClass(botBubbleText) ? botBubbleText : undefined))
         )}
         style={{

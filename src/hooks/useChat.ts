@@ -13,7 +13,7 @@ export const useChat = () => {
   const [isLoading, setIsLoading] = useState(false);
 
   const sendMessage = async (text: string) => {
-    // Optimistic UI update
+
     const userMsg: Message = { id: Date.now().toString(), role: 'user', content: text };
     setMessages(prev => [...prev, userMsg]);
     setIsLoading(true);

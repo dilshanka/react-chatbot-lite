@@ -2,7 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 
-/* 1. Custom Scrollbar (Slim & Grey) */
+
 .neuro-scrollbar::-webkit-scrollbar {
   width: 6px;
 }
@@ -17,7 +17,7 @@
   background-color: #D1D5DB;
 }
 
-/* 2. Animations */
+
 @keyframes slideIn {
   from {
     opacity: 0;
@@ -38,7 +38,7 @@
   }
 }
 
-/* 3. Utility Classes for Animations */
+
 .animate-slide-in {
   animation: slideIn 0.3s ease-out forwards;
 }
@@ -47,7 +47,6 @@
   animation: fadeIn 0.2s ease-out forwards;
 }
 
-/* 4. Typing Indicator Bounce */
 @keyframes bounce {
   0%, 100% {
     transform: translateY(0);

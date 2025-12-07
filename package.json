@@ -5,14 +5,15 @@
   "description": "A modern, headless RAG chatbot widget for React applications.",
   "private": false,
   "type": "module",
-  "main": "./dist/neuro-ui.umd.cjs",
-  "module": "./dist/neuro-ui.js",
+  "main": "./dist/react-chatbot-lite.umd.cjs",
+  "module": "./dist/react-chatbot-lite.js",
+  "homepage": "https://react-chatbot-lite.vercel.app",
   "types": "./dist/index.d.ts",
   "exports": {
     ".": {
       "types": "./dist/index.d.ts",
-      "import": "./dist/neuro-ui.js",
-      "require": "./dist/neuro-ui.umd.cjs"
+      "import": "./dist/react-chatbot-lite.js",
+      "require": "./dist/react-chatbot-lite.umd.cjs"
     },
     "./style.css": "./dist/style.css"
   },

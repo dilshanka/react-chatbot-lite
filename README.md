@@ -31,7 +31,7 @@ pnpm add react-chatbot-lite
 
 ### **1. Import Styles**
 
-Add this to your project file 
+Add this to your project file
 
 ```ts
 import "react-chatbot-lite/style.css";
@@ -141,6 +141,35 @@ Pass a theme object to override the entire UI—no CSS required.
   }}
 />
 ```
+
+## 🔌 Backend API Contract
+
+To make the chatbot functional, your backend server must accept a **POST** request at the `/api/chat` endpoint. The widget will automatically append `/api/chat` to the `baseUrl` you provide in the config.
+
+### 1. The Request 
+
+**Endpoint:** POST /api/chat  
+**Headers:** Content-Type: application/json
+
+Request body example:
+
+{
+"message": "User's question goes here",
+"botId": "user_123_abc",
+}
+
+### 2. The Response (What your server must return)
+
+Your server must return a JSON object with at least an **answer** key.
+
+Response example:
+
+{
+"answer": "This is the AI's response text.",
+"sources": [
+"https://example.com/source-1",
+]
+}
 
 ## 📄 License
 

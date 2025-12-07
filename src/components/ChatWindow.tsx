@@ -19,10 +19,11 @@ export interface ChatTheme {
   bodyBgColor?: string;       // e.g., 'bg-white' or '#ffffff'
   messageAreaBgColor?: string; // e.g., 'bg-gray-50' or '#f9f9f9'
   borderColor?: string;       // e.g., 'border-gray-100' or '#e0e0e0'
-  buttonBgGradient?: string;  // e.g., 'from-blue-600 to-indigo-600'
+  buttonBgGradient?: string;  // e.g., 'from-blue-600 to-indigo-600' or 'linear-gradient(...)' or '#2563eb'
   buttonBgOpen?: string;      // e.g., 'bg-gray-100' or '#f0f0f0'
   buttonTextColor?: string;   // e.g., 'text-white' or '#ffffff'
   buttonOpenTextColor?: string; // e.g., 'text-gray-600' or '#666666'
+  launcherBgStyle?: React.CSSProperties; // Optional: custom style for launcher button background
   iconColor?: string;         // e.g., 'text-blue-300' or '#93c5fd'
   statusDotColor?: string;    // e.g., 'bg-green-400' or '#4ade80'
   poweredByTextColor?: string; // e.g., 'text-gray-400' or '#9ca3af'
@@ -99,6 +100,7 @@ export const ChatWindow = ({
     buttonBgOpen = 'bg-gray-100',
     buttonTextColor = 'text-white',
     buttonOpenTextColor = 'text-gray-600',
+    launcherBgStyle,
     iconColor = 'text-blue-300',
     statusDotColor = 'bg-green-400',
     poweredByTextColor = 'text-gray-400',
@@ -171,7 +173,7 @@ export const ChatWindow = ({
                 <div>
                   <h3 className={cn(`font-bold ${titleFontSize}`)}>{title}</h3>
                   <div className="flex items-center gap-1.5">
-                    <span className={cn(`w-2 h-2 rounded-full ${statusDotColor} animate-pulse`)}></span>
+                    <span className={cn(`w-2 h-2 rounded-full animate-pulse`, isTailwindClass(statusDotColor) ? statusDotColor : undefined)} style={isTailwindClass(statusDotColor) ? undefined : ({ backgroundColor: statusDotColor } as CSSProperties)}></span>
                     <span className={cn(`${subtitleFontSize} text-gray-300`)}>{alwaysActiveText}</span>
                   </div>
                 </div>
@@ -202,7 +204,7 @@ export const ChatWindow = ({
                 <div>
                   <h3 className={cn(`font-bold ${titleFontSize}`)}>{title}</h3>
                   <div className="flex items-center gap-1.5">
-                    <span className={cn(`w-2 h-2 rounded-full ${statusDotColor} animate-pulse`)}></span>
+                    <span className={cn(`w-2 h-2 rounded-full animate-pulse`, isTailwindClass(statusDotColor) ? statusDotColor : undefined)} style={isTailwindClass(statusDotColor) ? undefined : ({ backgroundColor: statusDotColor } as CSSProperties)}></span>
                     <span className={cn(`${subtitleFontSize} text-gray-300`)}>{alwaysActiveText}</span>
                   </div>
                 </div>
@@ -289,9 +291,16 @@ export const ChatWindow = ({
             }}
           />
           <div className="text-center mt-2">
-            <span className={cn(`${poweredByFontSize} ${poweredByTextColor} flex items-center justify-center gap-1`)}>
-               {poweredByText.split(' by ')[0]} <span className="font-semibold text-gray-500">{poweredByText.split(' by ')[1]}</span>
-            </span>
+            {/* Render poweredByText as a single string with same color (supports Tailwind class or hex color) */}
+            {(() => {
+              const poweredByClass = isTailwindClass(poweredByTextColor) ? poweredByTextColor : undefined;
+              const poweredByStyle = isTailwindClass(poweredByTextColor) ? undefined : ({ color: poweredByTextColor } as CSSProperties);
+              return (
+                <span className={cn(`${poweredByFontSize} flex items-center justify-center gap-1`, poweredByClass)} style={poweredByStyle}>
+                  {poweredByText}
+                </span>
+              );
+            })()}
           </div>
         </div>
       </div>
@@ -302,9 +311,19 @@ export const ChatWindow = ({
         className={cn(
           `pointer-events-auto ${buttonSize} rounded-full shadow-xl flex items-center justify-center transition-all duration-300 transform hover:scale-105 active:scale-95`,
           isOpen 
-            ? `${buttonBgOpen} ${buttonOpenTextColor} rotate-90` 
-            : `bg-gradient-to-r ${buttonBgGradient} ${buttonTextColor}`
+            ? `${buttonOpenTextColor} rotate-90` 
+            : `${buttonTextColor}`,
+          // Add Tailwind classes only if they look like Tailwind (e.g., bg-... or from-...)
+          !isOpen && isTailwindClass(buttonBgGradient) ? `bg-gradient-to-r ${buttonBgGradient}` : undefined,
+          isOpen && isTailwindClass(buttonBgOpen) ? buttonBgOpen : undefined
         )}
+        style={{
+          // Apply inline styles if not Tailwind classes (for hex colors, gradients, etc.)
+          ...(isOpen && !isTailwindClass(buttonBgOpen) ? { backgroundColor: buttonBgOpen } : {}),
+          ...(!isOpen && !isTailwindClass(buttonBgGradient) ? { background: buttonBgGradient } : {}),
+          // Allow override with explicit launcherBgStyle
+          ...(launcherBgStyle || {})
+        }}
       >
         {isOpen ? closeIcon : launcherIcon}
       </button>

@@ -1,73 +1,100 @@
-# React + TypeScript + Vite
+# React Chatbot Lite 🤖  
+A lightweight, high-performance **RAG chatbot widget** for React applications. Designed to be **headless-capable** but ships with a **beautiful modern UI** out of the box. Connects easily to **Gemini**, **OpenAI**, or **any custom backend** via a simple, standardized API contract.
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+---
 
-Currently, two official plugins are available:
+## ✨ Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- 🚀 **Modern UI** — Gradients, glassmorphism, smooth animations  
+- 🎨 **Fully Themeable** — Customize every color, size, and text without CSS  
+- 🧠 **RAG Ready** — Citations, sources, markdown rendering  
+- 🔌 **Backend Agnostic** — Works with Node, Python (FastAPI), or any HTTP API  
+- 📱 **Responsive** — Mobile and desktop optimized  
+- 💨 **Fast** — Built with Vite + Rollup, zero runtime overhead  
 
-## React Compiler
+---
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## 📦 Installation
 
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
-
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
-
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```bash
+npm install react-chatbot-lite
+# or
+yarn add react-chatbot-lite
+# or
+pnpm add react-chatbot-lite
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+---
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+## 🚀 Quick Start
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+### **1. Import Styles**
+
+Add this to your root file (`main.tsx`, `App.tsx`, or `_app.tsx`):
+
+```ts
+import 'react-chatbot-lite/dist/style.css';
 ```
+
+### **2. Wrap Your App**
+
+```tsx
+import { ChatProvider, ChatWindow } from 'react-chatbot-lite';
+
+function App() {
+  return (
+    <ChatProvider 
+      config={{ 
+        baseUrl: "https://your-backend-api.com", // Your RAG server endpoint
+        botId: "user_123_abc" // Optional: For multi-tenant apps
+      }}
+    >
+      {/* Your App Content */}
+      <HomePage />
+
+      {/* Chat Widget */}
+      <ChatWindow />
+    </ChatProvider>
+  );
+}
+```
+
+---
+
+## 🎨 Theming & Customization
+
+Pass a theme object to override the entire UI—no CSS required.
+
+```tsx
+<ChatWindow
+  title="Support Assistant"
+  position="bottom-right"
+  theme={{
+    // Header
+    headerBgGradient: "linear-gradient(135deg, #FF512F, #DD2476)",
+    headerTextColor: "#ffffff",
+
+    // Launcher Button
+    buttonBgGradient: "linear-gradient(135deg, #FF512F, #DD2476)",
+    buttonSize: "h-16 w-16",
+
+    // User Message
+    userBubbleBg: "#FFE4E6",
+    userBubbleText: "#9F1239",
+
+    // Bot Message
+    botBubbleBg: "#F3F4F6",
+    botBubbleText: "#1F2937",
+
+    // Content
+    thinkingText: "Agent is searching knowledge base...",
+    poweredByText: "Powered by MyCompany AI"
+  }}
+/>
+```
+
+
+## 📄 License
+
+MIT © Kavindu Dilshan 
+

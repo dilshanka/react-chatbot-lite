@@ -1,13 +1,16 @@
+
 {
-  "name": "neuro-ui",
-  "version": "0.0.1",
+  "name": "react-chatbot-lite",
+  "version": "1.0.0",
+  "description": "A modern, headless RAG chatbot widget for React applications.",
+  "private": false,
   "type": "module",
   "main": "./dist/neuro-ui.umd.cjs",
   "module": "./dist/neuro-ui.js",
   "types": "./dist/index.d.ts",
   "exports": {
     ".": {
-      "types": "./dist/index.d.ts",  
+      "types": "./dist/index.d.ts",
       "import": "./dist/neuro-ui.js",
       "require": "./dist/neuro-ui.umd.cjs"
     },
@@ -15,6 +18,20 @@
   },
   "files": [
     "dist"
+  ],
+  "author": "Your Name",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/yourusername/react-chatbot-lite.git"
+  },
+  "keywords": [
+    "react",
+    "chatbot",
+    "ai",
+    "rag",
+    "widget",
+    "tailwind"
   ],
   "scripts": {
     "dev": "vite",

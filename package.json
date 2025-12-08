@@ -1,7 +1,6 @@
-
 {
   "name": "react-chatbot-lite",
-  "version": "1.0.0",
+  "version": "1.0.3",
   "description": "A modern, headless RAG chatbot widget for React applications.",
   "private": false,
   "type": "module",
@@ -19,8 +18,10 @@
   },
   "files": [
     "dist"
+    
+
   ],
-  "author": "Your Name",
+  "author": "Kavindu Dilshan <dilshankavindu076@gmail.com>",
   "license": "MIT",
   "repository": {
     "type": "git",
@@ -28,11 +29,20 @@
   },
   "keywords": [
     "react",
+    "react-component",
     "chatbot",
+    "chat-widget",
     "ai",
     "rag",
+    "retrieval-augmented-generation",
+    "llm",
+    "gemini",
+    "openai",
     "widget",
-    "tailwind"
+    "tailwind",
+    "headless-ui",
+    "typescript",
+    "conversational-ui"
   ],
   "scripts": {
     "dev": "vite",

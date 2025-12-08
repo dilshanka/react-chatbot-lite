@@ -1,0 +1,76 @@
+{
+  "name": "react-chatbot-lite",
+  "version": "1.0.2",
+  "description": "A modern, headless RAG chatbot widget for React applications.",
+  "private": false,
+  "type": "module",
+  "main": "./dist/react-chatbot-lite.umd.cjs",
+  "module": "./dist/react-chatbot-lite.js",
+  "homepage": "https://react-chatbot-lite.vercel.app",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/react-chatbot-lite.js",
+      "require": "./dist/react-chatbot-lite.umd.cjs"
+    },
+    "./style.css": "./dist/style.css"
+  },
+  "files": [
+    "dist",
+    "docs"  
+
+  ],
+  "author": "Kavindu Dilshan <dilshankavindu076@gmail.com>",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dilshanka/react-chatbot-lite.git"
+  },
+  "keywords": [
+    "react",
+    "react-component",
+    "chatbot",
+    "chat-widget",
+    "ai",
+    "rag",
+    "retrieval-augmented-generation",
+    "llm",
+    "gemini",
+    "openai",
+    "widget",
+    "tailwind",
+    "headless-ui",
+    "typescript",
+    "conversational-ui"
+  ],
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc && vite build",
+    "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
+    "preview": "vite preview"
+  },
+  "peerDependencies": {
+    "react": "^18.0.0",
+    "react-dom": "^18.0.0"
+  },
+  "devDependencies": {
+    "@types/node": "^20.0.0",
+    "@types/react": "^18.2.15",
+    "@types/react-dom": "^18.2.7",
+    "@vitejs/plugin-react": "^4.0.3",
+    "autoprefixer": "^10.4.14",
+    "postcss": "^8.4.27",
+    "tailwindcss": "^3.3.3",
+    "typescript": "^5.0.2",
+    "vite": "^4.4.5",
+    "vite-plugin-dts": "^3.9.1"
+  },
+  "dependencies": {
+    "clsx": "^2.0.0",
+    "framer-motion": "^10.16.4",
+    "lucide-react": "^0.263.1",
+    "react-markdown": "^8.0.7",
+    "tailwind-merge": "^1.14.0"
+  }
+}

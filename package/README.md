@@ -2,44 +2,7 @@
 
 A lightweight, high-performance **RAG chatbot widget** for React applications. Designed to be **headless-capable** but ships with a **beautiful modern UI** out of the box. Connects easily to **Gemini**, **OpenAI**, or **any custom backend** via a simple, standardized API contract.
 
-## 🎨 Theming Examples
-
-See how `react-chatbot-lite` adapts to different brands instantly using the `theme` prop.
-
-<table width="100%">
-  <tr>
-    <th width="50%">Default Blue</th>
-    <th width="50%">Teal / Modern</th>
-  </tr>
-  <tr>
-    <td align="center">
-      <img src="https://github.com/dilshanka/react-chatbot-lite/raw/main/docs/default.gif" width="100%" alt="Default Theme" />
-      <br />
-      <code>theme="default"</code>
-    </td>
-    <td align="center">
-      <img src="https://github.com/dilshanka/react-chatbot-lite/raw/main/docs/teal.gif" width="100%" alt="Teal Theme" />
-      <br />
-      <code>theme="teal"</code>
-    </td>
-  </tr>
-  <tr>
-    <th width="50%">Dark Mode</th>
-    <th width="50%">Midnight (Purple)</th>
-  </tr>
-  <tr>
-    <td align="center">
-      <img src="https://github.com/dilshanka/react-chatbot-lite/raw/main/docs/dark.gif" width="100%" alt="Dark Mode" />
-      <br />
-      <code>theme="dark"</code>
-    </td>
-    <td align="center">
-      <img src="https://github.com/dilshanka/react-chatbot-lite/raw/main/docs/midnight.gif" width="100%" alt="Midnight Theme" />
-      <br />
-      <code>theme="midnight"</code>
-    </td>
-  </tr>
-</table>
+![Chatbot Demo](./docs/demo.gif)
 
 ---
 

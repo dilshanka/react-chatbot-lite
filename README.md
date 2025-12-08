@@ -2,6 +2,8 @@
 
 A lightweight, high-performance **RAG chatbot widget** for React applications. Designed to be **headless-capable** but ships with a **beautiful modern UI** out of the box. Connects easily to **Gemini**, **OpenAI**, or **any custom backend** via a simple, standardized API contract.
 
+![Chatbot Demo](./docs/demo.gif)
+
 ---
 
 ## ✨ Features
